@@ -61,14 +61,14 @@ const Search = ({newSearch, handleSearch}) => {
 
 const App = () => {
   const [persons, setPersons] = useState([]);
-  const [matches, setMatches] = useState([]);
   const [newName, setNewName] = useState('');
   const [newNumber, setNewNumber] = useState('');
   const [search, setSearch] = useState('');
 
 
   useEffect(() => {
-    personServices.getAll()
+    personServices
+      .getAll()
       .then(initialPersons => {
         setPersons(initialPersons);
       });
@@ -107,7 +107,7 @@ const App = () => {
       personServices.add({ name: newName, number: newNumber })
         .then((addedPerson) => {
           const updatedList = persons.concat(addedPerson);
-
+          console.log("added person");
           setPersons(updatedList);
           setNewName('');
           setNewNumber('');
@@ -134,14 +134,18 @@ const App = () => {
   }
 
   const handleSearch = (event) => {
-    setSearch(event.target.value.toLowerCase());
+    setSearch(event.target.value);
+  }
 
-    const filteredPersons = persons.filter(person => {
-      const name = person.name.toLowerCase();
-      return search === name.slice(0, search.length);
-    });
-
-    setMatches(search === '' ? persons : filteredPersons);
+  const getMatches = () => {
+    if (search) {
+      return persons.filter(person => {
+        const name = person.name.toLowerCase();
+        return search.toLowerCase() === name.slice(0, search.length);
+      });
+    } else {
+      return persons;
+    }
   }
 
   return (
@@ -157,10 +161,10 @@ const App = () => {
         number={newNumber}
         handleName={handleName}
         handleNumber={handleNumber}
-        handleSumit={handleSubmit}
+        handleSubmit={handleSubmit}
       />
       <h3>Numbers</h3>
-      <Persons persons={matches} handleRemove={handleRemove}/>
+      <Persons persons={getMatches()} handleRemove={handleRemove}/>
     </div>
   )
 
