@@ -50,7 +50,7 @@ const PersonForm = (props) => {
   )
 }
 
-const Search = (newSearch, handleSearch) => {
+const Search = ({newSearch, handleSearch}) => {
   return (
     <input 
       value={newSearch}
