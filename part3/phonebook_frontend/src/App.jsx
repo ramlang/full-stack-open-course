@@ -148,7 +148,7 @@ const App = () => {
     <div>
       <h2>Phonebook</h2>
       <Search 
-        newSearch={newSearch}
+        newSearch={search}
         handleSearch={handleSearch}
       />
       <h3>Add a New Contact</h3>
