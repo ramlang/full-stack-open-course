@@ -1,7 +1,8 @@
-PUT http://localhost:3001/api/notes/6559652e8e368ea6094251f6
+POST http://localhost:3001/api/notes
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im93byIsImlkIjoiNjU1ZDBiZjM4MzI1YTI3NmY1MGU4NzhiIiwiaWF0IjoxNzAwNjI5NTQ5fQ.vGlFiazOR6G2NbFPabYrpR6f422vy1RFW6tgVKV9j30
 
 {
-  "content": "owo",
-  "important": false
+  "content": "hewwo worwd",
+  "important": true
 }

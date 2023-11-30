@@ -9,7 +9,7 @@ const password = process.argv[2]
 
 const url =
 
-`mongodb+srv://fullstack:${password}@cluster0.8hc0ugb.mongodb.net/noteApp?retryWrites=true&w=majority`
+`mongodb+srv://fullstack:${password}@cluster0.8hc0ugb.mongodb.net/testNoteApp?retryWrites=true&w=majority`
 
 mongoose.set('strictQuery', false)
 mongoose.connect(url)
@@ -23,7 +23,7 @@ const noteSchema = new mongoose.Schema({
 const Note = mongoose.model('Note', noteSchema);
 
 // const note = new Note({
-//   content: 'Nononono hewwo!! Hewwo! Hewp me',
+//   content: 'Browser can execute only JavaScript',
 //   date: new Date(),
 //   important: true,
 // })
